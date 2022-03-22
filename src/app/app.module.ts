@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GenerationsComponent } from './components/generations/generations.component';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
+import { PokedexPipe } from './shared/pipes/pokedex.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     GenerationsComponent,
-    PokemonsComponent
+    PokemonsComponent,
+    PokedexPipe
   ],
   imports: [
     BrowserModule,
