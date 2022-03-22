@@ -2,6 +2,7 @@
 
   <div class="columns">
     <div class="column">
+      <p>{{this.pokemons.length}} en base de données</p>
       <p>Dans l'ordre du Pokédex :</p>
       <p *ngIf="selectedPokemon;else na">
         Le Pokémon sélectionné est : {{selectedPokemon.name}}
