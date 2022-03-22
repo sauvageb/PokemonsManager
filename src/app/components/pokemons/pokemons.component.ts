@@ -9,9 +9,13 @@ import {PokemonService} from "../../services/pokemon.service";
 })
 export class PokemonsComponent implements OnInit {
 
-  pokemons: Pokemon[] = [];
+  searchedPokemon!: string;
 
+  pokemons: Pokemon[] = [];
   selectedPokemon!: Pokemon;
+
+  sortValue = 'ASC';
+
 
   constructor(private pokemonService: PokemonService) {
   }
@@ -21,10 +25,24 @@ export class PokemonsComponent implements OnInit {
     this.pokemons = this.pokemonService.fetchAll();
   }
 
+  onSearch() {
+    console.log(this.searchedPokemon);
+  }
+
 
   onPokemonSelected(pokemon: Pokemon): void {
     this.selectedPokemon = pokemon;
   }
 
+  isAscendingSort() {
+    return this.sortValue === 'ASC';
+  }
 
+  changeSort() {
+    if (this.isAscendingSort()) {
+      this.sortValue = 'DESC';
+    } else {
+      this.sortValue = 'ASC';
+    }
+  }
 }

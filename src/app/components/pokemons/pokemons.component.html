@@ -13,8 +13,22 @@
   <ng-template #na>Aucune sélection de pokémon</ng-template>
 
   <div class="row">
+    <form class="mt-5" #f="ngForm">
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="searchedPokemon"
+               [class.is-invalid]="f.invalid"
+               (ngModelChange)="onSearch()"
+               name="searchedPokemon" placeholder="Nom du pokémon">
+        <button type="reset" class="btn btn-outline-dark">Annuler</button>
+        <button class="btn btn-outline-dark" (click)="changeSort()">
+          Ordre {{isAscendingSort() ? 'Croissant' : 'Décroissant'}}
+        </button>
+      </div>
+    </form>
+  </div>
 
-    <div class="col-md-4 mt-3" *ngFor="let pok of pokemons | sortByPokedex:'DESC'">
+  <div class="row">
+    <div class="col-md-4 mt-3" *ngFor="let pok of pokemons | sortByPokedex:sortValue">
       <app-pokemon
         [pokemon]="pok"
         (onPokemonSelected)="onPokemonSelected($event)"

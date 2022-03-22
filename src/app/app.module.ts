@@ -7,6 +7,7 @@ import { GenerationsComponent } from './components/generations/generations.compo
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
 import { PokedexPipe } from './shared/pipes/pokedex.pipe';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,10 +17,11 @@ import { PokemonComponent } from './components/pokemon/pokemon.component';
     PokedexPipe,
     PokemonComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
