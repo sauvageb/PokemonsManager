@@ -1,0 +1,33 @@
+<div class="card" style="width: 18rem;">
+  <img [src]="pokemon?.image" class="card-img-top w-50 align-self-center" [alt]="pokemon?.name">
+  <div class="card-body">
+    <h5 class="card-title">{{pokemon?.name}}</h5>
+    <p class="card-text">{{pokemon?.id | number: '3.0-0'}}</p>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Catégorie : <span *ngIf="pokemon?.category;else na">{{pokemon?.category}}</span>
+    </li>
+    <li class="list-group-item">
+      Type : <span *ngIf="pokemon?.types;else na">{{pokemon?.types}}</span>
+    </li>
+    <li class="list-group-item">
+      Taille : <span *ngIf="pokemon?.size;else na">{{pokemon?.size | number : '1.0-2'}} m</span>
+    </li>
+    <li class="list-group-item">
+      Poids : <span *ngIf="pokemon?.weight;else na">{{pokemon?.weight | number : '1.0-2'}} kg</span>
+    </li>
+  </ul>
+
+  <div class="card-footer">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-primary" type="button"
+              (click)="selectPokemon()">Sélectionner
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #na>N/A</ng-template>

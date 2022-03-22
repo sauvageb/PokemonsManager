@@ -1,33 +1,23 @@
 <div class="container">
 
+  <div class="columns">
+    <div class="column">
+      <p>Dans l'ordre du Pokédex :</p>
+      <p *ngIf="selectedPokemon;else na">
+        Le Pokémon sélectionné est : {{selectedPokemon.name}}
+      </p>
+    </div>
+  </div>
+
+  <ng-template #na>Aucune sélection de pokémon</ng-template>
+
   <div class="row">
 
-    <div class="col-md-4 mt-3" *ngFor="let pokemon of pokemons | sortByPokedex:'DESC'">
-      <div class="card" style="width: 18rem;">
-        <img [src]="pokemon.image" class="card-img-top w-50 align-self-center" [alt]="pokemon.name">
-        <div class="card-body">
-          <h5 class="card-title">{{pokemon.name}}</h5>
-          <p class="card-text">{{pokemon.id | number: '3.0-0'}}</p>
-        </div>
-
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            Catégorie : <span *ngIf="pokemon.category;else na">{{pokemon.category}}</span>
-          </li>
-          <li class="list-group-item">
-            Type : <span *ngIf="pokemon.types;else na">{{pokemon.types}}</span>
-          </li>
-          <li class="list-group-item">
-            Taille : <span *ngIf="pokemon.size;else na">{{pokemon.size | number : '1.0-2'}} m</span>
-          </li>
-          <li class="list-group-item">
-            Poids : <span *ngIf="pokemon.weight;else na">{{pokemon.weight | number : '1.0-2'}} kg</span>
-          </li>
-        </ul>
-      </div>
-
-      <ng-template #na>N/A</ng-template>
-
+    <div class="col-md-4 mt-3" *ngFor="let pok of pokemons | sortByPokedex:'DESC'">
+      <app-pokemon
+        [pokemon]="pok"
+        (onPokemonSelected)="onPokemonSelected($event)"
+      ></app-pokemon>
     </div>
   </div>
 </div>

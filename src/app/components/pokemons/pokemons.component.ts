@@ -10,6 +10,8 @@ export class PokemonsComponent implements OnInit {
 
   pokemons: Pokemon[] = [];
 
+  selectedPokemon!: Pokemon;
+
   ngOnInit(): void {
     this.pokemons = [
       {
@@ -66,9 +68,12 @@ export class PokemonsComponent implements OnInit {
         weight: 90.5,
         image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png'
       },
-
     ];
-
   }
+
+  onPokemonSelected(pokemon: Pokemon): void {
+    this.selectedPokemon = pokemon;
+  }
+
 
 }
