@@ -23,7 +23,15 @@ export class PokemonsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pokemons = this.pokemonService.fetchAll();
+    this.pokemonService.fetchAll()
+      .subscribe({
+        next: (data) => {
+          this.pokemons = data;
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
   }
 
   onSearch() {
