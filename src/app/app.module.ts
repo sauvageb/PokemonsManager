@@ -13,6 +13,7 @@ import {HomeComponent} from './components/home/home.component';
 import {SigninComponent} from './components/signin/signin.component';
 import {SignupComponent} from './components/signup/signup.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {NavbarComponent} from './components/navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
