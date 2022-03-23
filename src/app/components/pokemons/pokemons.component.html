@@ -12,22 +12,51 @@
 
   <ng-template #na>Aucune sélection de pokémon</ng-template>
 
+  <!-- Form template for searching Pokemons -->
   <div class="row">
     <form class="mt-5" #f="ngForm">
       <div class="input-group">
         <input type="text" class="form-control" [(ngModel)]="searchedPokemon"
                [class.is-invalid]="f.invalid"
                (ngModelChange)="onSearch()"
+               pattern="([a-zA-Z]*|C3PO)"
+               #searchInput="ngModel"
                name="searchedPokemon" placeholder="Nom du pokémon">
-        <button type="reset" class="btn btn-outline-dark">Annuler</button>
+
+        <button type="reset" (click)="onSearch()"
+                class="btn btn-outline-dark">Annuler
+        </button>
         <button class="btn btn-outline-dark" (click)="changeSort()">
           Ordre {{isAscendingSort() ? 'Croissant' : 'Décroissant'}}
         </button>
       </div>
     </form>
+    <div *ngIf="searchInput.invalid" class="text-danger">
+      Le champ de saisie doit contenir que des lettres.
+    </div>
   </div>
 
-  <div class="row">
+  <!-- Search Results  -->
+  <div class="row mt-3">
+    <h3>Résultats pour la recherche : {{searchedPokemon}}</h3>
+
+    <!-- EasterEgg to display when search match with C3PO  -->
+    <div class="col-md-12 mt-3" *ngIf="easterEgg" (click)="hideEasterEgg()">
+      <div class="card">
+        <div class="card-body text-center">
+          <img src="https://media.giphy.com/media/3o7bu1nVSxNQUWMAZa/source.gif">
+        </div>
+      </div>
+    </div>
+
+    <!-- No pokemons to display   -->
+    <div class="col-md-12 mt-3" *ngIf="pokemons.length < 1 && !easterEgg && f.valid">
+      <div class="card">
+        <div class="card-body text-center">Aucun Pokémon trouvé</div>
+      </div>
+    </div>
+
+    <!-- Listing pokemons -->
     <div class="col-md-4 mt-3" *ngFor="let pok of pokemons | sortByPokedex:sortValue">
       <app-pokemon
         [pokemon]="pok"

@@ -15,20 +15,25 @@ export class PokemonsComponent implements OnInit {
   selectedPokemon!: Pokemon;
 
   sortValue = 'ASC';
-
+  easterEgg: boolean = false;
 
   constructor(private pokemonService: PokemonService) {
   }
-
 
   ngOnInit(): void {
     this.pokemons = this.pokemonService.fetchAll();
   }
 
   onSearch() {
-    console.log(this.searchedPokemon);
+    this.easterEgg = this.searchedPokemon === 'C3PO';
+    this.pokemons = this.pokemonService.search(this.searchedPokemon);
   }
 
+  hideEasterEgg() {
+    this.easterEgg = false;
+    this.searchedPokemon = '';
+    this.onSearch();
+  }
 
   onPokemonSelected(pokemon: Pokemon): void {
     this.selectedPokemon = pokemon;
@@ -45,4 +50,5 @@ export class PokemonsComponent implements OnInit {
       this.sortValue = 'ASC';
     }
   }
+
 }
