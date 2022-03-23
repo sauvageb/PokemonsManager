@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <header
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <img class="w-50"
+           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png">
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="" routerLinkActive="link-dark" class="nav-link px-2 link-secondary"
+             [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
+      <li><a routerLink="generations" routerLinkActive="link-dark" class="nav-link px-2 link-secondary">Générations</a>
+      </li>
+      <li><a routerLink="pokemons" routerLinkActive="link-dark" class="nav-link px-2 link-secondary">Pokémons</a></li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <a routerLink="signin" class="btn btn-outline-primary me-2">Se connecter</a>
+      <a routerLink="signup" type="button" class="btn btn-primary">S'enregistrer</a>
+    </div>
+  </header>
+</div>
+
