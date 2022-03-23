@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Pokemon} from "../../shared/models/pokemon";
 import {PokemonService} from "../../services/pokemon.service";
+import {faMagnifyingGlass, faSort} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pokemons',
@@ -16,6 +17,8 @@ export class PokemonsComponent implements OnInit {
 
   sortValue = 'ASC';
 
+  faMagnifyingGlass = faMagnifyingGlass;
+  faSort = faSort;
 
   constructor(private pokemonService: PokemonService) {
   }
@@ -26,7 +29,7 @@ export class PokemonsComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.searchedPokemon);
+    this.pokemons = this.pokemonService.search(this.searchedPokemon);
   }
 
 

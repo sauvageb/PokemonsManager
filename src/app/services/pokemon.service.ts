@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Pokemon} from "../shared/models/pokemon";
 
 @Injectable({
   providedIn: 'root'
@@ -65,8 +66,17 @@ export class PokemonService {
   constructor() {
   }
 
-  fetchAll() {
+  fetchAll(): Pokemon[] {
     return this.pokemons;
+  }
+
+  search(pokemonName: string): Pokemon[] {
+    if (pokemonName === '') {
+      return this.pokemons;
+    } else {
+      const regex = new RegExp(pokemonName, 'gi');
+      return this.pokemons.filter(p => p.name.match(regex));
+    }
   }
 
 
