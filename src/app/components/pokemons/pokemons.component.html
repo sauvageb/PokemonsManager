@@ -1,5 +1,6 @@
 <div class="container">
 
+  <h1>Les Pokémons :</h1>
   <div class="columns">
     <div class="column">
       <p>{{this.pokemons.length}} en base de données</p>
@@ -27,7 +28,7 @@
                 class="btn btn-outline-dark">Annuler
         </button>
         <button class="btn btn-outline-dark" (click)="changeSort()">
-          Ordre {{isAscendingSort() ? 'Croissant' : 'Décroissant'}}
+          <fa-icon [icon]="faSort"></fa-icon>
         </button>
       </div>
     </form>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Pokemon} from "../../shared/models/pokemon";
 import {PokemonService} from "../../services/pokemon.service";
+import {faSort} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pokemons',
@@ -16,6 +17,7 @@ export class PokemonsComponent implements OnInit {
 
   sortValue = 'ASC';
   easterEgg: boolean = false;
+  faSort = faSort;
 
   constructor(private pokemonService: PokemonService) {
   }
