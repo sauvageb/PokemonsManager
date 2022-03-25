@@ -3,13 +3,15 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {NavbarComponent} from "./components/navbar/navbar.component";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpClientModule
+        HttpClientModule,
+        FontAwesomeModule
       ],
       declarations: [
         AppComponent,
